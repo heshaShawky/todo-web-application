@@ -20,8 +20,8 @@
                         <?php foreach ($tasks as $task): ?>
                         <tr>
                             <td><?php echo $task['id']; ?></td>
-                            <td><a href="/todo/?p=<?php echo intval($task['id']) ?>"><?php echo $task['title']; ?></a></td>
-                            <td><a class="btn btn-danger" href="todo/?delete=<?php echo intval($task['id'])?>">Delete</a></td>
+                            <td><a href="todos/?p=<?php echo intval($task['id']) ?>"><?php echo $task['title']; ?></a></td>
+                            <td><a class="btn btn-danger" href="todos/?delete=<?php echo intval($task['id'])?>">Delete</a></td>
                         </tr>
                         <?php endforeach; ?>
 
