@@ -4,16 +4,15 @@ include ROOT_PATH . '/inc/header.php';
 
 // read todo
 if (isset($_GET["p"])) {
-    $id = intval($_GET["p"]);
-    $todo = get_single_post($id);
-    echo $todo['title'];
+    $id     = intval($_GET["p"]);
+    $todo   = get_single_post($id);
 }
 
 if(empty($todo)) {
     header("Location: ../index.php");
 }
 
-// Delete the to do
+// Delete the todo
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     delete_single_post($id);

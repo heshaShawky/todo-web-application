@@ -55,3 +55,25 @@ function delete_single_post($id) {
 
     return $results;
 }
+
+
+//Users
+
+function get_all_users() {
+    global $connection;
+
+    try {
+        $results = $connection -> prepare(
+            "SELECT *
+            FROM Users
+            ORDER BY id"
+        );
+        $results->execute();
+    } catch (Exception $e) {
+        echo "@ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results->fetchAll(PDO::FETCH_ASSOC);
+
+}
