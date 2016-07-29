@@ -17,9 +17,10 @@
 
                     <!-- Tbody -->
                     <tbody>
+                        <?php $i = 1; ?>
                         <?php foreach ($tasks as $task): ?>
                         <tr>
-                            <td><?php echo $task['id']; ?></td>
+                            <td><?php echo $i++; ?></td>
                             <td><a href="todos/?p=<?php echo intval($task['id']) ?>"><?php echo $task['title']; ?></a></td>
                             <td><a class="btn btn-danger" href="todos/?delete=<?php echo intval($task['id'])?>">Delete</a></td>
                         </tr>
