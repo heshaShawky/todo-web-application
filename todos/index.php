@@ -1,4 +1,6 @@
-<?php include 'inc/header.php';
+<?php include '../inc/config.php';
+
+include ROOT_PATH . '/inc/header.php';
 
 
 if (isset($_GET["p"])) {
@@ -12,8 +14,8 @@ if (isset($_GET["p"])) {
 }
 
 if(empty($todo)) {
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 
-include 'inc/footer.php';
+include ROOT_PATH . 'inc/footer.php';

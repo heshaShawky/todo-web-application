@@ -1,6 +1,6 @@
-<?php
-    require_once "inc/database.php";
-    include "inc/functions.php";
+<?php 
+    require_once ROOT_PATH . "inc/database.php";
+    include ROOT_PATH . "inc/functions.php";
 ?>
 <!DOCTYPE html>
 <html>

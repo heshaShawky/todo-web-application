@@ -1,4 +1,5 @@
-<?php include "inc/header.php";
+<?php include 'inc/config.php';
+    include ROOT_PATH . "inc/header.php";
     $tasks = get_all_posts();
 ?>
 
@@ -29,4 +30,4 @@
             </div>
         </div>
 
-<?php include "inc/footer.php";
+<?php include ROOT_PATH . "inc/footer.php";
