@@ -1,6 +1,6 @@
 <?php include 'inc/config.php';
     include ROOT_PATH . "inc/header.php";
-    $tasks = get_all_posts();
+    $tasks = get_all_sub("tasks");
 ?>
 
         <!-- Container -->

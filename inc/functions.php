@@ -1,12 +1,12 @@
 <?php
 
-function get_all_posts() {
+function get_all_sub($table_name) {
     global $connection;
 
     try {
         $results = $connection->query(
             "SELECT *
-            FROM tasks
+            FROM {$table_name}
             ORDER BY id ASC
         ");
 
@@ -18,12 +18,12 @@ function get_all_posts() {
     return $results->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function get_single_post($id) {
+function get_single_sub($table_name, $id) {
     global $connection;
     try {
         $results = $connection->prepare(
             "SELECT *
-            FROM tasks
+            FROM {$table_name}
             WHERE id = ?"
         );
         $results->bindParam(1, $id);
@@ -36,12 +36,12 @@ function get_single_post($id) {
     return $results->fetch(PDO::FETCH_ASSOC);
 }
 
-function delete_single_post($id) {
+function delete_single_sub($table_name, $id) {
     global $connection;
 
     try {
         $results = $connection->prepare(
-            "DELETE FROM tasks
+            "DELETE FROM {$table_name}
             WHERE id = ?"
         );
 
@@ -54,26 +54,4 @@ function delete_single_post($id) {
     }
 
     return $results;
-}
-
-
-//Users
-
-function get_all_users() {
-    global $connection;
-
-    try {
-        $results = $connection -> prepare(
-            "SELECT *
-            FROM Users
-            ORDER BY id"
-        );
-        $results->execute();
-    } catch (Exception $e) {
-        echo "@ERORR!: " . $e->getMessage() . "<br />";
-        die();
-    }
-
-    return $results->fetchAll(PDO::FETCH_ASSOC);
-
 }
