@@ -6,6 +6,7 @@ include ROOT_PATH . '/inc/header.php';
 if (isset($_GET["p"])) {
     $id     = intval($_GET["p"]);
     $todo   = get_single_sub("tasks", $id);
+    echo $todo['title'];
 }
 
 if(empty($todo)) {

@@ -55,3 +55,24 @@ function delete_single_sub($table_name, $id) {
 
     return $results;
 }
+
+function create_user($username, $password, $email, $image) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "INSERT INTO users (name, password, image)
+            VALUES (?, ?, ?, ?)"
+        );
+        $results->bindParam(1, $username);
+        $results->bindParam(2, $password);
+        $results->bindParam(3, $email);
+        $results->bindParam(4, $image);
+        $results ->execute();
+
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+}

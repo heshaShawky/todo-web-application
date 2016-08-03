@@ -13,6 +13,7 @@
                     <thead>
                         <th>id</th>
                         <th>tile</th>
+                        <th><a href="index.php?add=" class="btn btn-success">Add</a></th>
                     </thead>
 
                     <!-- Tbody -->
@@ -25,7 +26,6 @@
                             <td><a class="btn btn-danger" href="todos/?delete=<?php echo intval($task['id'])?>">Delete</a></td>
                         </tr>
                         <?php endforeach; ?>
-
                     </tbody>
                 </table>
             </div>
