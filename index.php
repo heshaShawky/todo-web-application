@@ -1,5 +1,8 @@
 <?php include 'inc/config.php';
     include ROOT_PATH . "inc/header.php";
+    if (isset($_SESSION['username'])) {
+        header("Location:".BASE_URL."home");
+    }
     $tasks = get_all_sub("tasks");
 ?>
 
@@ -7,27 +10,11 @@
         <div class="container">
             <!-- Raw -->
             <div class="row">
-                <!-- Table -->
-                <table class="table table-bordered table-hover">
-                    <!-- Thead -->
-                    <thead>
-                        <th>id</th>
-                        <th>tile</th>
-                        <th><a href="index.php?add=" class="btn btn-success">Add</a></th>
-                    </thead>
-
-                    <!-- Tbody -->
-                    <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach ($tasks as $task): ?>
-                        <tr>
-                            <td><?php echo $i++; ?></td>
-                            <td><a href="todos/?p=<?php echo intval($task['id']) ?>"><?php echo $task['title']; ?></a></td>
-                            <td><a class="btn btn-danger" href="todos/?delete=<?php echo intval($task['id'])?>">Delete</a></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <div class="jumbotron">
+                    <h1>Hello, world!</h1>
+                    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                </div>
             </div>
         </div>
 

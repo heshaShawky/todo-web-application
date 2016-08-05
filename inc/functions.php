@@ -56,18 +56,17 @@ function delete_single_sub($table_name, $id) {
     return $results;
 }
 
-function create_user($username, $password, $email, $image) {
+function create_user($username, $password, $email) {
     global $connection;
 
     try {
         $results = $connection->prepare(
-            "INSERT INTO users (name, password, image)
-            VALUES (?, ?, ?, ?)"
+            "INSERT INTO users (name, password, email)
+            VALUES (?, ?, ?)"
         );
         $results->bindParam(1, $username);
         $results->bindParam(2, $password);
         $results->bindParam(3, $email);
-        $results->bindParam(4, $image);
         $results ->execute();
 
     } catch (Exception $e) {
@@ -75,4 +74,25 @@ function create_user($username, $password, $email, $image) {
         die();
     }
 
+    return $results;
+}
+
+function user_login ($email, $password) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "SELECT *
+            FROM users
+            WHERE email = ? AND password = ?"
+        );
+        $results->bindParam(1, $email);
+        $results->bindParam(2, $password);
+        $results->execute();
+
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+    }
+
+    return $results->fetch(PDO::FETCH_ASSOC);
 }
