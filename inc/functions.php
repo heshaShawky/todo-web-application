@@ -116,7 +116,7 @@ function create_board ($title, $user_id) {
     return $results;
 }
 
-function read_bords($user_id) {
+function read_boards($user_id) {
     global $connection;
 
     try {

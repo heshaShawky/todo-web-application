@@ -1,6 +1,6 @@
 <?php require '../inc/config.php';
 include ROOT_PATH . 'inc/header.php';
-$boards = read_bords(intval($_SESSION['id']));
+$boards = read_boards(intval($_SESSION['id']));
 if (isset($_SESSION['username'])) :?>
 
 <div class="container">
