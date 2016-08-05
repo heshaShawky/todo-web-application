@@ -134,3 +134,41 @@ function read_boards($user_id) {
 
     return $results->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function create_list($title, $board_id) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "INSERT INTO todos_lists (title, board_id)
+            VALUES (?, ?)"
+        );
+        $results->bindParam(1, $title);
+        $results->bindParam(2, $board_id);
+        $results->execute();
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results;
+}
+
+function read_lists($board_id) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "SELECT *
+            FROM todos_lists
+            WHERE board_id = ?"
+        );
+        $results->bindParam(1, $board_id);
+        $results->execute();
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results->fetchAll(PDO::FETCH_ASSOC);
+}

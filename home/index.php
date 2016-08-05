@@ -5,11 +5,13 @@ if (isset($_SESSION['username'])) :?>
 
 <div class="container">
     <div class="row">
+        <?php foreach ($boards as $board): ?>
         <div class="col-sm-4">
-            <?php foreach ($boards as $board): ?>
-                <h2><?php echo $board['title'] ?></h2>
-            <?php endforeach; ?>
+            <div class="add-list">
+                <h2><a target="_blank" href="<?php echo BASE_URL . "boards/?id=" . intval($board['id']) . "&n=" . urlencode($board['title']) ?>"><?php echo $board['title'] ?></a></h2>
+            </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </div>
 
@@ -19,7 +21,8 @@ if (isset($_SESSION['username'])) :?>
         $title = $_POST['title'];
         create_board($title, intval($_SESSION['id']));
         header("Location: ".BASE_URL."home ");
-    } ?>
+    }
+    ?>
     <div class="main-login main-center">
         <form class="form-horizontal" method="post" action="">
 
@@ -37,17 +40,10 @@ if (isset($_SESSION['username'])) :?>
             </div>
         </form>
     </div>
-<?php } ?>
+<?php } elseif(!empty($_GET['create'])) {
+    header("Location: ".BASE_URL."");
+} ?>
 
-
-<?php else: ?>
-
-<?php header("Location: ".BASE_URL.""); ?>
-
-<?php endif; ?>
-
-
-
-
+<?php else: header("Location: ".BASE_URL.""); endif; ?>
 
 <?php include ROOT_PATH . 'inc/footer.php';

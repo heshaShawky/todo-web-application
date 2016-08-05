@@ -57,3 +57,9 @@ input::-webkit-input-placeholder {
     width: 50px;
     background: #ff3c3c;
 }
+
+.add-list {
+    background: #ddd;
+    padding: 15px;
+	margin: 10px auto;
+}
