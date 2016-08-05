@@ -1,4 +1,6 @@
-<?php session_start();
+<?php
+    ob_start();
+    session_start();
     require_once ROOT_PATH . "inc/database.php";
     include ROOT_PATH . "inc/functions.php";
 ?>

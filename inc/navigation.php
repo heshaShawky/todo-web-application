@@ -18,6 +18,19 @@
                 <li class="active"><a href="<?php echo BASE_URL ?>home">Home <span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a
+                        href="#"
+                        class="dropdown-toggle"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        style="font-size:25px;">+</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo BASE_URL?>home/?create">create board...</a></li>
+                    </ul>
+                </li>
                 <li>
                     <?php if (!empty($_SESSION['image'])): ?>
                         <img src="" />
@@ -29,6 +42,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+
                         <li><a href="#">Profile</a></li>
                         <li><a href="">Setting</a></li>
                         <li role="separator" class="divider"></li>

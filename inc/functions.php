@@ -96,3 +96,41 @@ function user_login ($email, $password) {
 
     return $results->fetch(PDO::FETCH_ASSOC);
 }
+
+function create_board ($title, $user_id) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "INSERT INTO boards (title, user_id) VALUES (?, ?)"
+        );
+        $results->bindParam(1, $title);
+        $results->bindParam(2, $user_id);
+        $results->execute();
+
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results;
+}
+
+function read_bords($user_id) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "SELECT *
+            FROM boards
+            WHERE user_id = ?"
+        );
+        $results->bindParam(1, $user_id);
+        $results->execute();
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results->fetchAll(PDO::FETCH_ASSOC);
+}
