@@ -2,9 +2,13 @@
 require '../inc/config.php';
 include ROOT_PATH . 'inc/header.php';
 
-if (isset($_GET['id']))
+if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
     $board = get_single_sub("boards", $id);
+    if ($board['user_id'] != $_SESSION['id'] ) {
+        header("Location: ".BASE_URL." ");
+    }
+}
 
 if(empty($_GET['id'])) {
     header("Location:".BASE_URL." ") ;

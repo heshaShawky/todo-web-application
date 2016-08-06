@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) :?>
         <?php foreach ($boards as $board): ?>
         <div class="col-sm-4">
             <div class="add-list">
-                <h2><a target="_blank" href="<?php echo BASE_URL . "boards/?id=" . intval($board['id']) . "&n=" . urlencode($board['title']) ?>"><?php echo $board['title'] ?></a></h2>
+                <h2><a href="<?php echo BASE_URL . "boards/?id=" . intval($board['id']) . "&n=" . urlencode($board['title']) ?>"><?php echo $board['title'] ?></a></h2>
             </div>
         </div>
         <?php endforeach; ?>

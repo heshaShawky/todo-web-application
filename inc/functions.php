@@ -122,7 +122,9 @@ function read_boards($user_id) {
     try {
         $results = $connection->prepare(
             "SELECT *
-            FROM boards
+            FROM users
+            INNER JOIN boards
+            ON boards.user_id = users.id
             WHERE user_id = ?"
         );
         $results->bindParam(1, $user_id);
@@ -159,8 +161,9 @@ function read_lists($board_id) {
 
     try {
         $results = $connection->prepare(
-            "SELECT *
-            FROM todos_lists
+            "SELECT * FROM boards
+            INNER JOIN todos_lists
+            ON todos_lists.board_id = boards.id
             WHERE board_id = ?"
         );
         $results->bindParam(1, $board_id);
@@ -169,6 +172,10 @@ function read_lists($board_id) {
         echo "ERORR!: " . $e->getMessage() . "<br />";
         die();
     }
+
+    // while ($row = ) {
+    //     # code...
+    // }
 
     return $results->fetchAll(PDO::FETCH_ASSOC);
 }
