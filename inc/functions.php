@@ -173,9 +173,45 @@ function read_lists($board_id) {
         die();
     }
 
-    // while ($row = ) {
-    //     # code...
-    // }
 
     return $results->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function read_items($id) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "SELECT * FROM todos_lists
+            INNER JOIN tasks
+            ON todos_lists.id = tasks.list_id
+            WHERE list_id = ?"
+        );
+        $results->bindParam(1, $id);
+        $results->execute();
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function create_item($title, $list_id) {
+    global $connection;
+
+    try {
+        $results = $connection->prepare(
+            "INSERT INTO tasks (title, list_id)
+            VALUES (?, ?)"
+        );
+        $results->bindParam(1, $title);
+        $results->bindParam(2, $list_id);
+        $results->execute();
+    } catch (Exception $e) {
+        echo "ERORR!: " . $e->getMessage() . "<br />";
+        die();
+    }
+
+    return $results;
 }
