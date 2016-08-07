@@ -1,9 +1,11 @@
 <?php include "../inc/config.php";
 include ROOT_PATH . "inc/header.php";
+
 if (!empty($_SESSION['username'])) {
     header("Location: ". BASE_URL ."home ");
 }
-if (isset($_POST['register'])) {
+
+if ($_POST) {
     $user     = trim($_POST['name']);
     $password = trim($_POST['password']);
     $email    = trim($_POST['email']);
@@ -14,6 +16,22 @@ if (isset($_POST['register'])) {
 
 ?>
 
+<div id="sign-up-message">
+
+</div>
+<div id="success-message"
+    style="
+        position: absolute;
+        top: 0;
+        display: none;
+        width: 100%;
+        ">
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p>Welcome to todo's successfuly registration </p>
+    </div>
+</div>
+
 <div class="container">
     <div class="row main">
         <div class="panel-heading">
@@ -23,8 +41,7 @@ if (isset($_POST['register'])) {
            	</div>
         </div>
 		<div class="main-login main-center">
-			<form class="form-horizontal" method="post" action="">
-
+			<form class="form-horizontal" method="post" action="" id="sign-up">
 				<div class="form-group">
 					<label for="name" class="cols-sm-2 control-label">Your Name</label>
 					<div class="cols-sm-10">
@@ -63,6 +80,7 @@ if (isset($_POST['register'])) {
 		         </div>
 			</form>
 		</div>
+
     </div>
 </div>
 

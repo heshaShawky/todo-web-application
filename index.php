@@ -1,9 +1,10 @@
-<?php include 'inc/config.php';
+<?php require 'inc/config.php';
     include ROOT_PATH . "inc/header.php";
+
+    // if user is login not allowed to see this page.
     if (isset($_SESSION['username'])) {
         header("Location:".BASE_URL."home");
     }
-    $tasks = get_all_sub("tasks");
 ?>
 
         <!-- Container -->
